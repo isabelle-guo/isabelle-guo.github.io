@@ -1,2 +1,2 @@
 # isabelle-guo.github.io
-Personal website containing scientific and creative projects.
+Hello! Welcome to my personal website, which contains details about my scientific and creative projects. 
