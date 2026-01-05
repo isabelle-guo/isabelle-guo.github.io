@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabelle Guo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: flex-end;
+            gap: 3rem;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b9d, #c770f0, #6ec6ff);
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: #ff6b9d;
+        }
+
+        nav a.active::after {
+            width: 100%;
+            background: #ff6b9d;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 4rem;
+            background: linear-gradient(135deg, 
+                #ffffff 0%, 
+                #fef5ff 30%, 
+                #ffe8f5 50%, 
+                #ffd4e8 70%, 
+                #ffc4dd 100%);
+            overflow: hidden;
+        }
+
+        /* Background line art */
+        .line-art {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            height: 80%;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 200px 1fr 400px 200px;
+            gap: 3rem;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-photo::before {
+            content: 'Photo in action';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.85rem;
+            color: #666;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Courier New', monospace;
+            font-size: 5rem;
+            font-weight: bold;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .hero-image {
+            width: 400px;
+            height: 300px;
+            background: #e0e0e0;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: 'Lab/Science Image';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        .links-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .links-sidebar a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .links-sidebar a:hover {
+            color: #ff6b9d;
+        }
+
+        .decorative-plus {
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            font-size: 4rem;
+            color: #000;
+            font-weight: 300;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-photo {
+                margin: 0 auto;
+            }
+
+            .hero-image {
+                margin: 0 auto;
+            }
+
+            .links-sidebar {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="active">about</a>
+        <a href="#">science</a>
+        <a href="#">creative</a>
+        <a href="#">gallery</a>
+        <a href="#">contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Background flowing lines -->
+        <svg class="line-art" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 600 Q 200 400, 300 500 T 600 400 T 700 600" stroke="white" stroke-width="2" opacity="0.6"/>
+            <path d="M150 650 Q 250 450, 350 550 T 650 450 T 750 650" stroke="white" stroke-width="2" opacity="0.5"/>
+            <path d="M200 700 Q 300 500, 400 600 T 700 500 T 800 700" stroke="white" stroke-width="2" opacity="0.4"/>
+            <ellipse cx="500" cy="400" rx="150" ry="200" stroke="white" stroke-width="2" opacity="0.3" transform="rotate(15 500 400)"/>
+            <ellipse cx="550" cy="450" rx="120" ry="170" stroke="white" stroke-width="2" opacity="0.3" transform="rotate(25 550 450)"/>
+        </svg>
+
+        <div class="decorative-plus">+</div>
+
+        <div class="hero-content">
+            <div class="profile-photo"></div>
+            
+            <div class="hero-text">
+                <h1>Isabelle<br>Guo</h1>
+                <p class="subtitle">design portfolio<br>MIT media lab</p>
+            </div>
+
+            <div class="hero-image"></div>
+
+            <div class="links-sidebar">
+                <a href="#">LinkedIn</a>
+                <a href="#">CV</a>
+                <a href="#">Email</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add active state to nav links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
