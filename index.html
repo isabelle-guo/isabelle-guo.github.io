@@ -70,11 +70,12 @@
             align-items: center;
             padding: 0 4rem;
             background: linear-gradient(135deg, 
-                #ffffff 0%, 
-                #fef5ff 30%, 
-                #ffe8f5 50%, 
-                #ffd4e8 70%, 
-                #ffc4dd 100%);
+                #ffffff 0%,
+                #fef5f8 20%,
+                #fde8ed 40%,
+                #fcdfe5 60%,
+                #d4e5f3 80%,
+                #88ccf1 100%);
             overflow: hidden;
         }
 
@@ -90,43 +91,27 @@
         }
 
         .hero-content {
-            display: grid;
-            grid-template-columns: 200px 1fr 400px 200px;
-            gap: 3rem;
+            display: flex;
+            justify-content: flex-start;
             align-items: center;
+            gap: 4rem;
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
             z-index: 2;
         }
 
-        .profile-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: #ddd;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-photo::before {
-            content: 'Photo in action';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 0.85rem;
-            color: #666;
-            text-align: center;
+        .hero-text {
+            flex-shrink: 0;
         }
 
         .hero-text h1 {
-            font-family: 'Courier New', monospace;
-            font-size: 5rem;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 8rem;
             font-weight: bold;
             line-height: 0.9;
             margin-bottom: 1rem;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
         }
 
         .hero-text .subtitle {
@@ -135,30 +120,72 @@
             font-weight: 300;
         }
 
-        .hero-image {
-            width: 400px;
-            height: 300px;
-            background: #e0e0e0;
-            border-radius: 8px;
+        .hero-images {
             position: relative;
+            width: 450px;
+            height: 450px;
+            flex-shrink: 0;
+            margin-right: 3rem;
+        }
+
+        .hero-image {
+            width: 336px;
+            height: 240px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            position: absolute;
             overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, z-index 0s, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .hero-image::before {
-            content: 'Lab/Science Image';
+            content: 'Lab Image';
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #888;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+            z-index: 100 !important;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-image:nth-child(1) {
+            top: 10px;
+            left: 0px;
+            z-index: 4;
+        }
+
+        .hero-image:nth-child(2) {
+            top: 40px;
+            left: 30px;
+            z-index: 3;
+        }
+
+        .hero-image:nth-child(3) {
+            top: 70px;
+            left: 60px;
+            z-index: 2;
+        }
+
+        .hero-image:nth-child(4) {
+            top: 100px;
+            left: 90px;
+            z-index: 1;
         }
 
         .links-sidebar {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            align-items: center;
+            align-items: flex-end;
+            margin-left: auto;
         }
 
         .links-sidebar a {
@@ -178,26 +205,23 @@
             top: 15%;
             right: 10%;
             font-size: 4rem;
-            color: #000;
+            color: #ffffff;
             font-weight: 300;
-            opacity: 0.3;
+            opacity: 0.5;
             z-index: 1;
         }
 
         /* Responsive */
         @media (max-width: 1200px) {
             .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
+                flex-direction: column;
+                text-align: left;
                 gap: 2rem;
             }
 
-            .profile-photo {
-                margin: 0 auto;
-            }
-
-            .hero-image {
-                margin: 0 auto;
+            .hero-images {
+                width: 400px;
+                height: 400px;
             }
 
             .links-sidebar {
@@ -206,7 +230,7 @@
             }
 
             .hero-text h1 {
-                font-size: 3.5rem;
+                font-size: 5rem;
             }
         }
     </style>
@@ -235,19 +259,23 @@
         <div class="decorative-plus">+</div>
 
         <div class="hero-content">
-            <div class="profile-photo"></div>
-            
             <div class="hero-text">
                 <h1>Isabelle<br>Guo</h1>
-                <p class="subtitle">neuroscience + synbio<br>'26 @ McGill University</p>
+                <p class="subtitle">neuroscience + synbio<br>'26 @ McGill</p>
             </div>
 
-            <div class="hero-image"></div>
+            <div class="hero-images">
+                <div class="hero-image"></div>
+                <div class="hero-image"></div>
+                <div class="hero-image"></div>
+                <div class="hero-image"></div>
+            </div>
 
             <div class="links-sidebar">
                 <a href="#">LinkedIn</a>
-                <a href="#">CV download</a>
-                <a href="#">Updates</a>
+                <a href="#">CV</a>
+                <a href="#">Email</a>
+                <a href="#">GitHub</a>
             </div>
         </div>
     </section>
