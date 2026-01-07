@@ -1,73 +1,336 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isabelle Guo</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <a href="/" class="active">about</a>
-        <a href="/science/">science</a>
-        <a href="/creative/">creative</a>
-        <a href="/gallery/">gallery</a>
-        <a href="/contact/">contact</a>
-    </nav>
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <!-- Hero Section -->
-    <section class="hero gradient-pink-blue">
-        <!-- Background flowing lines -->
-        <svg class="line-art" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M100 600 Q 200 400, 300 500 T 600 400 T 700 600" stroke="white" stroke-width="2" opacity="0.6"/>
-            <path d="M150 650 Q 250 450, 350 550 T 650 450 T 750 650" stroke="white" stroke-width="2" opacity="0.5"/>
-            <path d="M200 700 Q 300 500, 400 600 T 700 500 T 800 700" stroke="white" stroke-width="2" opacity="0.4"/>
-            <ellipse cx="500" cy="400" rx="150" ry="200" stroke="white" stroke-width="2" opacity="0.3" transform="rotate(15 500 400)"/>
-            <ellipse cx="550" cy="450" rx="120" ry="170" stroke="white" stroke-width="2" opacity="0.3" transform="rotate(25 550 450)"/>
-        </svg>
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
 
-        <div class="decorative-plus">+</div>
+/* Typography */
+h1 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 8rem;
+    font-weight: bold;
+    line-height: 0.9;
+    margin-bottom: 1rem;
+    letter-spacing: -3px;
+}
 
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Isabelle<br>Guo</h1>
-                <p class="subtitle">neuroscience + synbio<br>'26 @ McGill</p>
-            </div>
+.subtitle {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 300;
+}
 
-            <div class="hero-images">
-                <div class="hero-image"></div>
-                <div class="hero-image"></div>
-                <div class="hero-image"></div>
-                <div class="hero-image"></div>
-            </div>
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 3rem;
+    z-index: 100;
+    background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%);
+}
 
-            <div class="links-sidebar">
-                <a href="#" aria-label="CV Download">
-                    <span class="cv-text">CV</span>
-                </a>
-                <a href="#" aria-label="GitHub">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2 L14.5 9.5 L22 9.5 L16 14 L18.5 21.5 L12 17 L5.5 21.5 L8 14 L2 9.5 L9.5 9.5 Z"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
 
-    <script>
-        // Add active state to nav links
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (this.getAttribute('href').startsWith('/')) {
-                    // Let internal links navigate normally
-                    return;
-                }
-                e.preventDefault();
-                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    </script>
-</body>
-</html>
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff6b9d, #c770f0, #6ec6ff);
+    transition: width 0.4s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a.active {
+    color: #ff6b9d;
+}
+
+nav a.active::after {
+    width: 100%;
+    background: #ff6b9d;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 4rem;
+    padding-right: 6rem;
+    overflow: hidden;
+}
+
+/* Gradient Backgrounds - Different for each page */
+.hero.gradient-pink-blue {
+    background: linear-gradient(135deg, 
+        #ffffff 0%,
+        #fef5f8 20%,
+        #fde8ed 40%,
+        #fcdfe5 60%,
+        #d4e5f3 80%,
+        #88ccf1 100%);
+}
+
+.hero.gradient-lavender-green {
+    background: linear-gradient(135deg,
+        #ffffff 0%,
+        #f5f3fe 20%,
+        #e8e5fd 40%,
+        #dcd9f5 60%,
+        #d4e8d4 80%,
+        #afd19e 100%);
+}
+
+.hero.gradient-peach-yellow {
+    background: linear-gradient(135deg,
+        #ffffff 0%,
+        #fef9f5 20%,
+        #fef0e8 40%,
+        #fde6dc 60%,
+        #f9dcc4 80%,
+        #f6d3a2 100%);
+}
+
+/* Background Line Art */
+.line-art {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    height: 80%;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 4rem;
+    z-index: 2;
+    flex-wrap: wrap;
+}
+
+.hero-text {
+    flex-shrink: 0;
+}
+
+/* Image Stack Layout */
+.hero-images {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    flex-shrink: 0;
+    margin-right: 3rem;
+    margin-left: 4rem;
+}
+
+.hero-image {
+    width: 336px;
+    height: 240px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    position: absolute;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, z-index 0s, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.hero-image::before {
+    content: 'Lab Image';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.hero-image:hover {
+    transform: scale(1.05);
+    z-index: 100 !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.hero-image:nth-child(1) {
+    top: 10px;
+    left: 120px;
+    z-index: 4;
+}
+
+.hero-image:nth-child(2) {
+    top: 50px;
+    left: 80px;
+    z-index: 3;
+}
+
+.hero-image:nth-child(3) {
+    top: 90px;
+    left: 40px;
+    z-index: 2;
+}
+
+.hero-image:nth-child(4) {
+    top: 130px;
+    left: 0px;
+    z-index: 1;
+}
+
+/* Liquid Glass Buttons */
+.links-sidebar {
+    display: grid;
+    grid-template-columns: 70px;
+    grid-template-rows: 70px 70px;
+    gap: 1rem;
+    margin-left: 2rem;
+}
+
+.links-sidebar a {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.1) 100%);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.links-sidebar a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+        rgba(255, 200, 255, 0.1) 0%,
+        rgba(200, 220, 255, 0.1) 50%,
+        rgba(255, 255, 200, 0.1) 100%);
+    border-radius: 4px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.links-sidebar a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.links-sidebar a svg {
+    width: 32px;
+    height: 32px;
+    stroke: #333333;
+    stroke-width: 2;
+    fill: none;
+    position: relative;
+    z-index: 1;
+}
+
+.links-sidebar a .cv-text {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    position: relative;
+    z-index: 1;
+}
+
+/* Decorative Elements */
+.decorative-plus {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    font-size: 4rem;
+    color: #ffffff;
+    font-weight: 300;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: left;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .hero-images {
+        margin-left: 0;
+    }
+
+    .links-sidebar {
+        margin-top: 1rem;
+    }
+
+    h1 {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 1.5rem 2rem;
+        gap: 2rem;
+    }
+
+    .hero {
+        padding: 0 2rem;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-images {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .hero-image {
+        width: 280px;
+        height: 200px;
+    }
+}
