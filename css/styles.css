@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabelle Guo</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="/" class="active">about</a>
+        <a href="/science/">science</a>
+        <a href="/creative/">creative</a>
+        <a href="/gallery/">gallery</a>
+        <a href="/contact/">contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero gradient-pink-blue">
+        <!-- Background flowing lines -->
+        <svg class="line-art" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 600 Q 200 400, 300 500 T 600 400 T 700 600" stroke="white" stroke-width="2" opacity="0.6"/>
+            <path d="M150 650 Q 250 450, 350 550 T 650 450 T 750 650" stroke="white" stroke-width="2" opacity="0.5"/>
+            <path d="M200 700 Q 300 500, 400 600 T 700 500 T 800 700" stroke="white" stroke-width="2" opacity="0.4"/>
+            <ellipse cx="500" cy="400" rx="150" ry="200" stroke="white" stroke-width="2" opacity="0.3" transform="rotate(15 500 400)"/>
+            <ellipse cx="550" cy="450" rx="120" ry="170" stroke="white" stroke-width="2" opacity="0.3" transform="rotate(25 550 450)"/>
+        </svg>
+
+        <div class="decorative-plus">+</div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Isabelle<br>Guo</h1>
+                <p class="subtitle">neuroscience + synbio<br>'26 @ McGill</p>
+            </div>
+
+            <div class="hero-images">
+                <div class="hero-image"></div>
+                <div class="hero-image"></div>
+                <div class="hero-image"></div>
+                <div class="hero-image"></div>
+            </div>
+
+            <div class="links-sidebar">
+                <a href="#" aria-label="CV Download">
+                    <span class="cv-text">CV</span>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2 L14.5 9.5 L22 9.5 L16 14 L18.5 21.5 L12 17 L5.5 21.5 L8 14 L2 9.5 L9.5 9.5 Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add active state to nav links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('/')) {
+                    // Let internal links navigate normally
+                    return;
+                }
+                e.preventDefault();
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
